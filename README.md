@@ -20,7 +20,7 @@ We have 3 type of constraints:
 
 The constraints formulation can be described as:
 ![MPC constraints derivation](Constraints.png "Click to maximize if the image rescaling make you dizzy")
-<p align="center"><small>welp, I guess that's all :3</small></p>
+<p align="center"><small>welp, I guess that's all XD</small></p>
 
 &nbsp;
 
@@ -30,8 +30,11 @@ Then we can describe the full formulation for Constrained MPC:
 *note:* You don't need to implement the full contraints matrix. Actually it is preferred to implement hard-contraints as little as possible to ensure maximum feasible search space.
 
 # The Quadratic Programming Solver
-In this implementation, I use (one of many) QP solver called [Active Set](https://en.wikipedia.org/wiki/Active-set_method). The big idea of active set algorithm is searching the optimal `x` value by solving the QP problem (with inequality constraints) as QP problem with equality constraints (EQP). The Active Set algorithm used in this implementation can be described as: 
+In this implementation, I use (one of many) QP solver called [Active Set](https://en.wikipedia.org/wiki/Active-set_method). The big idea of active set algorithm is searching the optimal <img src="http://latex.codecogs.com/gif.latex?x" border="0"/> value by solving the QP problem (with inequality constraints) as QP problem with equality constraints (EQP). The Active Set algorithm used in this implementation can be described as: 
 ![Active Set Algorithm](ActiveSet.png "Click to maximize if the image rescaling make you dizzy")
+
+For more explanation, [these slides](https://people.cs.umu.se/eddiew/optpde2016/QP.pdf) is quite good for explaining the mechanism behind Active Set for Quadratic Programming problem. Just be aware, that slide (and many QP formulation) use inequality constraint in the form <img src="http://latex.codecogs.com/gif.latex?Ax&space;\geq&space;b" border="0"/> while we use <img src="http://latex.codecogs.com/gif.latex?Ax&space;\leq&space;b" border="0"/> (just multiply the inequality with <img src="http://latex.codecogs.com/gif.latex?-1" border="0"/> to change from one form to another).
+
 
 # Wrap it up
 The constrained MPC then can be described as:
