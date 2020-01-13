@@ -16,6 +16,9 @@ We have 3 type of constraints:
 2. <img src="http://latex.codecogs.com/gif.latex?u\left&space;(k&space;\right&space;)" border="0"/>  Constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?u\textsubscript{min}\leq&space;u\left&space;(k&space;\right&space;)\leq&space;u\textsubscript{max}" border="0"/>).
 3. <img src="http://latex.codecogs.com/gif.latex?z\left&space;(k&space;\right&space;)" border="0"/>  Constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?z\textsubscript{min}\leq&space;z\left&space;(k&space;\right&space;)\leq&space;z\textsubscript{max}" border="0"/>).
 
+**Note**: To make the explanation simple, in this implementation I use full rank constraints. But in the real implementation, you don't need to (e.g. for <img src="http://latex.codecogs.com/gif.latex?u\left (k \right )" border="0"/> you can only implement the minimum constraint (without the maximum constraint) <img src="http://latex.codecogs.com/gif.latex?u\textsubscript{min}\leq&space;u\left&space;(k&space;\right&space;)&space;;&space;u\left&space;(k&space;\right&space;)&space;\epsilon&space;R\textsuperscript{M}" border="0"/>. Or for example you have 3 input, you can only constraining the second input <img src="http://latex.codecogs.com/gif.latex?u\textsubscript{2,min}\leq&space;u\textsubscript{2}\left&space;(k&space;\right&space;)" border="0"/> and set free the other inputs.
+
+The constraints formulation can be described as:
 ![MPC constraints derivation](Constraints.png "Click to maximize if the image rescaling make you dizzy")
 <p align="center"><small>welp, I guess that's all :3</small></p>
 
