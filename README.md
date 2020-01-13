@@ -14,7 +14,7 @@ To recap, the MPC formula derivation can be described as (I'm using Jan Maciejow
 We have 3 type of constraints:
 1. <img src="http://latex.codecogs.com/gif.latex?\Delta&space;U\left&space;(k&space;\right&space;)" border="0"/>  Constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?\Delta&space;U\textsubscript{min}\leq&space;\Delta&space;U\left&space;(k&space;\right&space;)\leq&space;\Delta&space;U\textsubscript{max}" border="0"/>).
 2. <img src="http://latex.codecogs.com/gif.latex?u\left&space;(k&space;\right&space;)" border="0"/>  Constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?u\textsubscript{min}\leq&space;u\left&space;(k&space;\right&space;)\leq&space;u\textsubscript{max}" border="0"/>).
-3. <img src="http://latex.codecogs.com/gif.latex?z\left&space;(k&space;\right&space;)" border="0"/>  Constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?z\textszbscript{min}\leq&space;z\left&space;(k&space;\right&space;)\leq&space;z\textszbscript{max}" border="0"/>).
+3. <img src="http://latex.codecogs.com/gif.latex?z\left&space;(k&space;\right&space;)" border="0"/>  Constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?z\textsubscript{min}\leq&space;z\left&space;(k&space;\right&space;)\leq&space;z\textsubscript{max}" border="0"/>).
 
 ![MPC constraints derivation](Constraints.png "Click to maximize if the image rescaling make you dizzy")
 <p align="center"><small>welp, I guess that's all :3</small></p>
