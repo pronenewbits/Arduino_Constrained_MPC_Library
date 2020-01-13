@@ -27,7 +27,7 @@ The constraints formulation can be described as:
 Then we can describe the full formulation for Constrained MPC:
 ![MPC full formulation](Formulasi_Permasalahan_MPC.png "Click to maximize if the image rescaling make you dizzy")
 
-*note:* You don't need to implement the full contraints matrix. Actually it is preferred to implement hard-contraints as little as possible to ensure maximum feasible search space.
+**Note**: You don't need to implement the full contraints matrix. Actually it is preferred to implement hard-contraints as little as possible to ensure maximum feasible search space.
 
 # The Quadratic Programming Solver
 In this implementation, I use (one of many) QP solver called [Active Set](https://en.wikipedia.org/wiki/Active-set_method). The big idea of active set algorithm is searching the optimal <img src="http://latex.codecogs.com/gif.latex?x" border="0"/> value by solving the QP problem (with inequality constraints) as QP problem with equality constraints (EQP). The Active Set algorithm used in this implementation can be described as: 
@@ -40,12 +40,39 @@ For more explanation, [these slides](https://people.cs.umu.se/eddiew/optpde2016/
 The constrained MPC then can be described as:
 ![Constrained MPC Algorithm](Kalkulasi.png "Click to maximize if the image rescaling make you dizzy")
 
+**Note**: <img src="http://latex.codecogs.com/gif.latex?x_{QP}=\Delta{U}_{MPC},\frac{1}{2}Q_{QP}=H_{MPC},c_{Q}^{T}x_{QP}=-\Delta{U}^{T}G_{MPC}" border="0"/>. So at (MPC_7), <img src="http://latex.codecogs.com/gif.latex?Q\textsubscript{QP}=2H\textsubscript{MPC},c\textsubscript{QP}=-G\textsubscript{MPC}" border="0"/>.
 
 # How to Use
-Bla bla bla lorem ipsum bla bla
+The MPC code is self contained and can be acessed in the folder [mpc_constrained_engl](mpc_constrained_engl) (this is the template project). Inside you will find these files:
+- `matrix.h/cpp` : The backbone of all my code in this account. This files contain the class for Matrix operation.
+- `mpc.h/cpp` : The source files of the MPC Class.
+- `konfig.h` : The configuration file.
+- `mpc_constrained_engl.ino` : The arduino main file (this is only the template file).
 
+For custom implementation, typically you only need to modify `konfig.h` and `*.ino` files. Where basically you need to:
+1. Set the length of `X, U, Z` vectors and sampling time `dt` in `konfig.h`, depend on your model.
+2. Set the MPC parameters like `Hp (Prediction Horizon)` or `Hu (Control Horizon)` in `konfig.h`, depend on your application.
+3. Enable/Disable and set the MPC constraints parameters like `DU`, `U`, or `Z` in `konfig.h`, depend on your application.
+4. Define the (linear) matrix system `A, B, C` and MPC initialization value `weightQ, weightR` in the `*.ino` file.
+
+After that, you only need to initialize the MPC class, set the non-zero initialization matrix by calling `MPC::vReInit(A, B, C, weightQ, weightR)` function at initialization, and call the function `MPC::bUpdate(SP, x, u)` at every sampling time to calculate the control value `u(k)`.
+
+&nbsp;
+
+*For Arduino configuration (`SYSTEM_IMPLEMENTATION` is set to `SYSTEM_IMPLEMENTATION_EMBEDDED_ARDUINO` in `konfig.h`):
+The code is tested on compiler Arduino IDE 1.8.10 and hardware Teensy 4.0 Platform.
+
+*For PC configuration (`SYSTEM_IMPLEMENTATION` is set to `SYSTEM_IMPLEMENTATION_PC` in `konfig.h`):
+The code is tested on compiler Qt Creator 4.8.2 and typical PC Platform.
+
+
+**Important note: For Teensy 4.0, I encounter RAM limitation where the `MATRIX_MAXIMUM_SIZE` can't be more than 14 (if you are using double precision) or 28 (if using single precision). If you already set more than that, your Teensy might be unable to be programmed (a bug in the Teensy bootloader?). The solution is simply to change the `MATRIX_MAXIMUM_SIZE` to be less than that, compile & upload the code from the compiler (the IDE then will protest that it cannot find the Teensy board), and click the program button on the Teensy board to force the bootloader to restart and download the firmware from the computer.**
+
+(The maximum matrix size 28 very much limit the `HP, Hu`, and constraints implementation, I guess 1 MB of Teensy RAM is not enough for constrained MPC huh...) 
 
 # Some Benchmark
+To demonstrate the code, I've made the MPC control a state-space model (HIL style) for Jet Transport Aircraft (ref: https://www.mathworks.com/help/control/ug/mimo-state-space-models.html#buv3tp8-1), where the configuration is (4 state, 2 input, 2 output LTI system) + Hp=xxxx & Hu=xxxx. The compiler is Arduino IDE 1.8.10 with default setting (compiler optimization setting: faster) and the hardware is Teensy 4.0.
+
 Bla bla bla lorem ipsum bla bla
 
 
