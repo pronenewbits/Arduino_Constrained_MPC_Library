@@ -45,7 +45,7 @@ The constrained MPC then can be described as:
 **Note**: <img src="http://latex.codecogs.com/gif.latex?x_{QP}=\Delta{U}_{MPC},\frac{1}{2}Q_{QP}=H_{MPC},c_{Q}^{T}x_{QP}=-\Delta{U}^{T}G_{MPC}" border="0"/>. So at (MPC_7), <img src="http://latex.codecogs.com/gif.latex?Q\textsubscript{QP}=2H\textsubscript{MPC},c\textsubscript{QP}=-G\textsubscript{MPC}" border="0"/>.
 
 # How to Use
-The MPC code is self contained and can be acessed in the folder [mpc_constrained_engl](mpc_constrained_engl) (this is the template project). Inside you will find these files:
+The MPC code is self contained and can be accessed in the folder [mpc_constrained_engl](mpc_constrained_engl) (this is the template project). Inside you will find these files:
 - `matrix.h/cpp` : The backbone of all my code in this account. This files contain the class for Matrix operation.
 - `mpc.h/cpp` : The source files of the MPC Class.
 - `konfig.h` : The configuration file.
