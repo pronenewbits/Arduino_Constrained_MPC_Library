@@ -73,11 +73,21 @@ The code is tested on compiler Qt Creator 4.8.2 and typical PC Platform.
 (The maximum matrix size 28 very much limit the `HP, Hu`, and constraints implementation, I guess 1 MB of Teensy RAM is not enough for constrained MPC huh...) 
 
 # Some Benchmark
-To demonstrate the code, I've made the MPC control a state-space model (HIL style) for Jet Transport Aircraft (ref: https://www.mathworks.com/help/control/ug/mimo-state-space-models.html#buv3tp8-1), where the configuration is (4 state, 2 input, 2 output LTI system) + Hp=xxxx & Hu=xxxx. The compiler is Arduino IDE 1.8.10 with default setting (compiler optimization setting: faster) and the hardware is Teensy 4.0.
+To demonstrate the code, I've made the MPC control a state-space model (HIL style) for Jet Transport Aircraft (ref: https://www.mathworks.com/help/control/ug/mimo-state-space-models.html#buv3tp8-1), where the configuration is (4 state, 2 input, 2 output LTI system) + Hp=4 & Hu=3. The compiler is Arduino IDE 1.8.10 with default setting (compiler optimization setting: faster) and the hardware is Teensy 4.0.
 
-Bla bla bla lorem ipsum bla bla
+The computation time needed to compute one iteration of `MPC::bUpdate(SP, x, u)` function are (*drum-roll*):
+1. Around **300 us** to **700 us** for no-constraint.
+<p align="center"><img src="Result_no_constraint.png" alt="Result_no_constraint"></p>
 
+2. Around max **2.648 ms** (max 4 Active set iteration) when slew rate constraints added (<img src="http://latex.codecogs.com/gif.latex?{-5}\leq&space;\Delta{U}\left{(k}\right{)}\leq{5}" border="0"/>). Take attention that the <img src="http://latex.codecogs.com/gif.latex?{u}\left{(k}\right{)}" border="0"/> signals become slower to change.
+<p align="center"><img src="Result_cnst_du.png" alt="Result_cnst_du"></p>
 
+3. Around max **4.139 ms** (max 4 Active set iteration) when slew rate constraints *and* output constrains added (<img src="http://latex.codecogs.com/gif.latex?{-5}\leq\Delta{U}\left{(k}\right{)}\leq{5}" border="0"/>, <img src="http://latex.codecogs.com/gif.latex?{-4}\leq{z}\left{(k}\right{)}\leq{3.5}" border="0"/>). Take attention, beside the <img src="http://latex.codecogs.com/gif.latex?{u}\left{(k}\right{)}" border="0"/> signals become slower to change. The output <img src="http://latex.codecogs.com/gif.latex?{z}\left{(k}\right{)}" border="0"/> at ~300th sampling time don't get overshoot anymore.
+<p align="center"><img src="Result_cnst_du_z.png" alt="Result_cnst_du_z"></p>
+The result when zoomed at 300-th sampling time:
+<p align="center"><img src="Result_cnst_du_z_zoom.png" alt="Result_cnst_du_z_zoom"></p>
+
+All result plotted using [Scilab](https://www.scilab.org/).
 
 # Closing Remark
 The matrix.h library's code documentation is still in Indonesian, but I plan to translate it into English soon (stay tuned!). In the meantime, it will be nice if you can test & validate my result or inform me if there are some bugs you encounter along the way! (or if you notice some grammar error in the documentation).
