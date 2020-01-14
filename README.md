@@ -5,7 +5,7 @@ This is a compact Constrained (linear) Model Predictive Control (MPC) library fo
 - If you set `SYSTEM_IMPLEMENTATION` to `SYSTEM_IMPLEMENTATION_EMBEDDED_NO_PRINT` in `konfig.h`, the code is platform agnostic (not using any library beside these C header files: `stdlib.h`, `stdint.h`, and `math.h`).
 - There's no malloc/new/free dynamic memory allocation for real time application (but using heavy stack local variables, so you need to run it through static memory analyzer if you are really concerned about implement this in mission critical hard real time application).
 
-The constrained MPC version can be found in [my other repository](https://github.com/pronenewbits/Arduino_Unconstrained_MPC_Library/).
+The unconstrained MPC version can be found in [my other repository](https://github.com/pronenewbits/Arduino_Unconstrained_MPC_Library/).
 
 # The Background
 This is the continuation of my previous repo [Arduino_Unconstrained_MPC_Library](https://github.com/pronenewbits/Arduino_Unconstrained_MPC_Library/), so you should read it before continue. As with my other repo, the main goal is for the student to learn the MPC concept (I've made decision to sacrifice speed to get best code readability I could get) while still capable of tackling real-time control system implementation (the code is computed in around **4 ms**! See *Some Benchmark* section below).
