@@ -12,7 +12,7 @@
  *       (optimasi lebih lanjut bisa dilakukan untuk mengurangi penggunaan memori).
  * 
  * Class Matrix Versioning:
- *    v0.5 (2020-01-11), {PNb}:
+ *    v0.5 (2020-01-14), {PNb}:
  *      - Buat file matrix.cpp (akhirnya!) untuk definisi fungsi di luar class.
  *      - Tambahkan operator overloading untuk operasi negatif matrix (mis. a = -b).
  *      - Tambahkan operator overloading untuk operasi penjumlahan & pengurangan 
