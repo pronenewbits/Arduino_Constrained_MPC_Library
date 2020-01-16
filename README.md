@@ -14,7 +14,7 @@ To recap, the MPC formula derivation can be described as (I'm using Jan Maciejow
 ![MPC derivation](Penurunan.png "Click to maximize if the image rescaling make you dizzy")
 
 We have 3 type of constraints:
-1. <img src="http://latex.codecogs.com/gif.latex?\Delta&space;U\left&space;(k&space;\right&space;)" border="0"/> constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?\Delta&space;U\textsubscript{min}\leq&space;\Delta&space;U\left&space;(k&space;\right&space;)\leq&space;\Delta&space;U\textsubscript{max}" border="0"/>), or the actuator slew rate constraint.
+1. <img src="http://latex.codecogs.com/gif.latex?\Delta&space;u\left&space;(k&space;\right&space;)" border="0"/> constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?\Delta&space;u\textsubscript{min}\leq&space;\Delta&space;u\left&space;(k&space;\right&space;)\leq&space;\Delta&space;u\textsubscript{max}" border="0"/>), or the actuator slew rate constraint.
 2. <img src="http://latex.codecogs.com/gif.latex?u\left&space;(k&space;\right&space;)" border="0"/> constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?u\textsubscript{min}\leq&space;u\left&space;(k&space;\right&space;)\leq&space;u\textsubscript{max}" border="0"/>), or the actuator output constraint.
 3. <img src="http://latex.codecogs.com/gif.latex?z\left&space;(k&space;\right&space;)" border="0"/> constraint (i.e. <img src="http://latex.codecogs.com/gif.latex?z\textsubscript{min}\leq&space;z\left&space;(k&space;\right&space;)\leq&space;z\textsubscript{max}" border="0"/>), or the system output constraint.
 
