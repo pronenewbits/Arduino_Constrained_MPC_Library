@@ -505,7 +505,7 @@ bool MPC::bActiveSet(Matrix &x, Matrix &Q, Matrix &c, Matrix &ineqLHS, Matrix &i
                     _idxIneqLowestLambda = _indexConstActive[_i];
                 }
             }
-        }    
+        }
         if (!_dlambdaPos) {
             /* remove the constraint that have lowest Lagrange multiplier */
             ASSERT((_idxIneqLowestLambda != -1), "Bug on the active set: remove ineq active");
