@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Class for MPC without constraint
+ * Class for MPC with constraint
  *
  *  The plant to be controlled is a Linear Time-Invariant System:
  *          x(k+1)  = A*x(k) + B*u(k)   ; x = Nx1, u = Mx1
