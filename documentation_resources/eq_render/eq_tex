@@ -1,0 +1,75 @@
+
+duk.gif                         \Delta{u(k)}
+
+dumin_leq_duk_leq_dumax.gif     \Delta{u_{min}}\leq\Delta{u(k)}\leq\Delta{u_{max}}
+
+uk.gif                          u(k)
+
+umin_leq_uk_leq_umax.gif        u_{min}\leq{u(k)}\leq{u_{max}}
+
+zk.gif                          z(k)
+
+zmin_leq_zk_leq_zmax.gif        z_{min}\leq{z(k)}\leq{z_{max}}
+
+umin_leq_uk.gif                 u_{min}\leq{u(k)}
+
+u2_leq_u2max.gif                u_{2}(k)\leq{u_{2,max}}
+
+variabel_qp_ke_mpc.gif          (x\textsubscript{QP}=\Delta{U}\textsubscript{MPC},\textrm{ }\frac{1}{2}Q\textsubscript{QP}=H\textsubscript{MPC},\textrm{ }c_{QP}^{T}x\textsubscript{QP}=-\Delta{U}_{MPC}^{T}G\textsubscript{MPC})
+
+                                x\textsubscript{QP}=\Delta{U}\textsubscript{MPC},1/2(Q\textsubscript{QP})=H\textsubscript{MPC},c_{QP}^{T}x\textsubscript{QP}=-\Delta{U}^{T}G\textsubscript{MPC}
+
+variabel_qp_ke_mpc2.gif         (Q\textsubscript{QP}=2H\textsubscript{MPC},c\textsubscript{QP}=-G\textsubscript{MPC})
+
+variabel_qp_ke_mpc3.gif         (x\textsubscript{QP}=\Delta{U}\textsubscript{MPC},\textrm{ }Q\textsubscript{QP}=2H\textsubscript{MPC},\textrm{ }c\textsubscript{QP}=-G\textsubscript{MPC})
+
+x.gif                           x
+                                
+solve_kkt_eq_no_constraint.gif  \begin{align*}
+                                          Q\Delta{x^{*}} &= -(Qx_k+c)\\
+                                    Q(\Delta{x^{*}}+x_k) &= -c\\
+                                             x_{optimal} &= -Q^{-1}c
+                                \end{align*}
+                                
+solve_kkt_eq_no_cons_as_mpc.gif \Delta{U}_{optimal}=\frac{1}{2}H^{-1}G
+
+wk.gif                          \boldsymbol{W}_{k}      font: comic sans
+
+solve_kkt_eq_by_invert.gif      \begin{bmatrix}\Delta{x^{*}}\\\lambda^{*}\end{bmatrix}=
+                                \begin{bmatrix}Q&&A_w^T\\A_w&&0\end{bmatrix}^{-1}
+                                \begin{bmatrix}-(Qx_k+c)\\0\end{bmatrix}
+                            
+Q.gif                           Q
+
+xk.gif                          x_{k}
+
+xk+1.gif                        x_{k+1}
+
+k_max_iter.gif                  k>k_{iteration,max}
+
+term_clause.gif                 \left(\Delta{x}^{*}=0\textrm{ and }\lambda^{*}\geq{0}\right)
+
+ax_geq_b.gif                    Ax\geq{b}
+
+ax_leq_b.gif                    Ax\leq{b}
+
+-1.gif                          -1
+
+q_qp_to_q_r_mpc.gif             Q_{QP}=2H_{MPC}=2\left(\Theta_{c}^{T}Q_{MPC}\Theta_{c}+R_{MPC}\right)
+
+q_qp.gif                        Q_{QP}
+            
+schur_comp_of_kkt.gif           \begin{bmatrix}Q&&A_w^T\\0&&-(A_wQ^{-1}A_w^T)\end{bmatrix}
+                                \begin{bmatrix}\Delta{x^{*}}\\\lambda^{*}\end{bmatrix}=
+                                \begin{bmatrix}-(Qx_k+c)\\-A_wQ^{-1}(Qx_k+c)\end{bmatrix}
+            
+solve_kkt_eq_by_schur.gif       \begin{align*}
+                                  (A_wQ^{-1}A_w^T)\lambda^{*}&=-A_wQ^{-1}(Qx_k+c)  \\
+                                                \Delta{x^{*}}&=Q^{-1}(-A_w^T\lambda^{*}-(Qx_k+c))
+                                \end{align*}
+            
+min5leq_du_leq5.gif             \left({-5}\leq\Delta{u}\left{(k}\right{)}\leq{5}\right)
+                                
+min5leq_du_leq5_min4_z_3_5.gif  \left({-5}\leq\Delta{u}\left{(k}\right{)}\leq{5}\textrm( , ){-4}\leq{z}\left{(k}\right{)}\leq{3.5}\right)
+                                
+                                
