@@ -115,7 +115,7 @@ void loop() {
             snprintf(bufferTxSer, sizeof(bufferTxSer)-1, "%.3f %i %.3f %.3f %.3f %.3f", ((float)_maxu64compuTime)/1000., MPC_HIL.cntIterActiveSet, SP[0][0], SP[1][0], z[0][0], z[1][0]);
         #else
             /* Print: Computation time, Set-Point, z, u */
-            snprintf(bufferTxSer, sizeof(bufferTxSer)-1, "%.3f %i %.3f %.3f %.3f %.3f %.3f %.3f", ((float)u64compuTime)/1000., MPC_HIL.cntIterActiveSet, SP[0][0], SP[1][0], z[0][0], z[1][0], u[0][0], u[1][0]);
+            snprintf(bufferTxSer, sizeof(bufferTxSer)-1, "%.3f %i %.3f %.3f %.3f %.3f %.3f %.3f", ((float)_maxu64compuTime)/1000., MPC_HIL.cntIterActiveSet, SP[0][0], SP[1][0], z[0][0], z[1][0], u[0][0], u[1][0]);
         #endif
         Serial.print(bufferTxSer);
         Serial.print('\n');
