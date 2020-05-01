@@ -51,7 +51,7 @@ repeat until "optimal enough"
     remove a subset of the constraints with negative Lagrange multipliers
     search for infeasible constraints
 end repeat
-````
+```
 
 Using above structure, the active set algorithm used in this implementation can be described as: 
 ![Active Set Algorithm](documentation_resources/ActiveSet.png "Click to maximize if the image rescaling make you dizzy")
@@ -167,9 +167,10 @@ The code is tested on compiler Arduino IDE 1.8.10 and hardware Teensy 4.0 Platfo
 The code is tested on compiler Qt Creator 4.8.2 and typical PC Platform.
 
 
-**Important note: For Teensy 4.0, I encounter RAM limitation where the `MATRIX_MAXIMUM_SIZE` can't be more than 14 (if you are using double precision) or 28 (if using single precision). If you already set more than that, your Teensy might be unable to be programmed (a bug in the Teensy bootloader?). The solution is simply to change the `MATRIX_MAXIMUM_SIZE` to be less than that, compile & upload the code from the compiler (the IDE then will protest that it cannot find the Teensy board), and click the program button on the Teensy board to force the bootloader to restart and download the firmware from the computer.**
+**Important note: For Teensy 4.0, I encounter RAM limitation where the `MATRIX_MAXIMUM_SIZE` can't be more than 28 (if you are using double precision) or 40 (if using single precision). If you already set more than that, your Teensy might be unable to be programmed (stack overflow make the bootloader program goes awry?). The solution is simply to change the `MATRIX_MAXIMUM_SIZE` to be less than that, compile & upload the code from the compiler. The IDE then will protest that it cannot find the Teensy board. DON'T PANIC. Click the program button on the Teensy board to force the bootloader to restart and download the firmware from the computer.**
 
-(The maximum matrix size 28 very much limit the `HP, Hu`, and constraints implementation, I guess 1 MB of Teensy RAM is not enough for constrained MPC huh...) 
+(The maximum matrix size 28 very much limit the `HP, Hu`, and constraints implementation, I guess [500 kB of Teensy stack](https://forum.pjrc.com/threads/58839-Teensy-4-0-memory-allocation) is not enough for constrained MPC huh...)
+next step: implement [memory pool](https://en.wikipedia.org/wiki/Memory_pool) for Matrix library!
 
 # Some Benchmark
 To demonstrate the code, I've made the MPC control a state-space model (HIL style) for Jet Transport Aircraft (ref: https://www.mathworks.com/help/control/ug/mimo-state-space-models.html#buv3tp8-1), where the configuration is (4 state, 2 input, 2 output LTI system) + Hp=4 & Hu=3. The compiler is Arduino IDE 1.8.10 with default setting (compiler optimization setting: faster) and the hardware is Teensy 4.0. Note that I'm somewhat 'cheating' by using the state variable `x` directly from the HIL system into the MPC calculation (in the real world it should be inferred using some kind of observer. But for benchmark purpose, the result should be the same).  
