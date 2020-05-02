@@ -169,7 +169,7 @@ The code is tested on compiler Qt Creator 4.8.2 and typical PC Platform.
 
 **Important note: For Teensy 4.0, I encounter RAM limitation where the `MATRIX_MAXIMUM_SIZE` can't be more than 28 (if you are using double precision) or 40 (if using single precision). If you already set more than that, your Teensy might be unable to be programmed (stack overflow make the bootloader program goes awry?). The solution is simply to change the `MATRIX_MAXIMUM_SIZE` to be less than that, compile & upload the code from the compiler. The IDE then will protest that it cannot find the Teensy board. DON'T PANIC. Click the program button on the Teensy board to force the bootloader to restart and download the firmware from the computer.**
 
-(The maximum matrix size 28 very much limit the `HP, Hu`, and constraints implementation, I guess [500 kB of Teensy stack](https://forum.pjrc.com/threads/58839-Teensy-4-0-memory-allocation) is not enough for constrained MPC huh...)
+(The maximum matrix size 28 very much limit the `HP, Hu`, and constraints implementation, I guess [500 kB of Teensy stack](https://www.pjrc.com/store/teensy4_memory.png) is not enough for constrained MPC huh...)
 next step: implement [memory pool](https://en.wikipedia.org/wiki/Memory_pool) for Matrix library!
 
 # Some Benchmark
