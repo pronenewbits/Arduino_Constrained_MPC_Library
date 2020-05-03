@@ -80,7 +80,7 @@ Another not so obvious but very efficient solution is by using [Schur complement
 Both approach to solve the KKT system is implemented below (as [naive implementation](README.md#the-first-implementation-the-naive-implementation) and [Schur complement implementation](README.md#the-second-implementation-optimized-active-set-with-schur-complement-of-kkt)).
 
 #### Active Set note: Additional Termination Condition
-Unlike unconstrained MPC (where the solver is basically a gain matrix), the constrained MPC solver use iteration to calculate the optimal control value (QP in worst case is NP-hard). It means in a real-time system, in worst case we need to terminate the iteration before the optimal control value can be calculated.
+Unlike unconstrained MPC (where the solver is [basically a gain matrix](https://github.com/pronenewbits/Arduino_Unconstrained_MPC_Library#the-second-implementation-description-optimized-version-of-the-naive-implementation)), the constrained MPC solver use iteration to calculate the optimal control value (QP in worst case is NP-hard). It means in a real-time system, in worst case we need to terminate the iteration before the optimal control value can be calculated.
 
 The nifty thing about ASM is that once we have optimal variable <img src="documentation_resources/eq_render/xk.gif" align="middle"/> candidate that is inside feasible region, the next iteration of the variable <img src="documentation_resources/eq_render/xk+1.gif" align="middle"/> will be both:
 a) Also inside the feasible region; and
